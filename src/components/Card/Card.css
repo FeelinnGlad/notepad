@@ -1,7 +1,3 @@
-.taskHolder div {
-  text-align: center;
-}
-
 .taskHolder {
   margin: 2rem;
   padding: 1.5rem;
@@ -13,10 +9,95 @@
   transition: all 50ms ease-in-out;
 }
 
+.captionField {
+  -webkit-appearance: none;
+  width: 70%;
+  display: block;
+  text-align: center;
+  margin: 1rem auto;
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+  color: #d0d0d0;
+  font-weight: 800;
+  font-size: 15px;
+  resize: none;
+  flex-wrap: wrap;
+}
+
+.textField {
+  -webkit-appearance: none;
+  width: 100%;
+  background-color: transparent;
+  resize: none;
+  border: none;
+  color: #868686;
+  font-size: 10px;
+  font-weight: bolder;
+  word-wrap: break-word;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d2d2d;
+}
+
 .selected {
   background-color: rgba(12, 44, 28, 0.71);
   border: 1px solid rgba(147, 224, 102, 0.45);
   box-shadow: 0 0 5px 2px inset rgba(49, 155, 120, 0.32);
+}
+
+.icons {
+  margin: -4.5rem -0.5rem;
+  float: right;
+  position: relative;
+  width: min-content;
+}
+
+.defaultIcons > *, .editingIcons > * {
+  width: 25px;
+  height: 25px;
+  transition: 100ms ease-in-out;
+}
+
+.selected input[type=checkbox]::before {
+  opacity: 1;
+}
+
+.editIcon {
+  color: rgba(147, 224, 102, 0.45);
+}
+
+.editIcon:hover {
+  color: #d0d0d0;
+}
+
+.defaultIcons > *:active, .editingIcons > *:active {
+  transform: scale(0.8);
+}
+
+.editing {
+  animation: cardBorderPulse 2s step-end infinite;
+}
+
+.editing .defaultIcons, .saveIcon, .discardIcon {
+  display: none;
+}
+
+.editing .saveIcon, .editing .discardIcon {
+  display: unset;
+}
+
+.discardIcon:hover {
+  color: brown;
+}
+
+.saveIcon:hover {
+  color: #53ad55;
 }
 
 p {
@@ -30,15 +111,13 @@ hr {
 }
 
 input[type=checkbox] {
+  width: 20px;
+  height: 20px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
   border: 1px solid rgba(147, 224, 102, 0.45);
   box-shadow: 0 0 5px 2px inset rgba(49, 155, 120, 0.32);
-  float:  right;
-  margin-top: -4rem;
   position: relative;
 }
 input[type=checkbox]::before {
@@ -51,9 +130,19 @@ input[type=checkbox]::before {
   right: 0;
   margin: 5px;
   opacity: 0;
-  transition: opacity 50ms ease-in-out;
 }
 
-.selected input[type=checkbox]::before {
-  opacity: 1;
+@keyframes cardBorderPulse {
+  from, to {
+    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    border: 1px solid transparent;
+    box-shadow: 0 0 5px 2px inset transparent;
+  }
+  50% {
+    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    border: 1px solid rgba(147, 224, 102, 0.45);
+    box-shadow: 0 0 5px 2px inset rgba(49, 155, 120, 0.32);
+  }
 }
