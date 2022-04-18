@@ -10,7 +10,7 @@ body {
   background-color: #0f1014;
 }
 
-h2, h3, a {
+h2, h3, a, .captionField {
   text-transform: uppercase;
   letter-spacing: 4px;
 }
