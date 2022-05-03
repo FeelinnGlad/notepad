@@ -1,10 +1,10 @@
-import './TaskLabel.css';
+import styles from './TaskLabel.module.css';
 
 const TaskLabel = () => (
-  <div className="taskSpace">
-    <div className="navigationBlock">
+  <div className={styles.taskSpace}>
+    <div className={styles.navigationBlock}>
       <div>
-        <h3>Task #3</h3>
+        <h3>Task #4</h3>
       </div>
     </div>
   </div>

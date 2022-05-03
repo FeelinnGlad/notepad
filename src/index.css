@@ -10,7 +10,28 @@ body {
   background-color: #0f1014;
 }
 
-h2, h3, a, .captionField {
+h2, h3, h4, a, .captionField {
   text-transform: uppercase;
   letter-spacing: 4px;
+}
+
+input[type=checkbox]::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 5px;
+}
+
+input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid rgba(147, 224, 102, 0.45);
+  box-shadow: 0 0 5px 2px inset rgba(49, 155, 120, 0.32);
+  position: relative;
 }
