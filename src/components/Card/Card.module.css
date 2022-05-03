@@ -1,5 +1,6 @@
 .taskHolder {
-  margin: 2rem;
+  display: inline-block;
+  margin: 0 2rem 2rem 2rem;
   padding: 1.5rem;
   width: 15rem;
   background-color: rgba(0, 0, 0, 0.24);
@@ -23,6 +24,8 @@
   font-size: 15px;
   resize: none;
   flex-wrap: wrap;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
 
 .textField {
@@ -32,16 +35,15 @@
   resize: none;
   border: none;
   color: #868686;
-  font-size: 10px;
-  font-weight: bolder;
+  font-size: 11px;
   word-wrap: break-word;
 }
 
-::-webkit-scrollbar {
+.taskHolder ::-webkit-scrollbar {
   width: 5px;
 }
 
-::-webkit-scrollbar-thumb {
+.taskHolder ::-webkit-scrollbar-thumb {
   background: #2d2d2d;
 }
 
@@ -63,8 +65,11 @@
   height: 25px;
   transition: 100ms ease-in-out;
 }
-
+.taskHolder input[type=checkbox]::before {
+  opacity: 0;
+}
 .selected input[type=checkbox]::before {
+  background-color: rgba(155, 224, 116, 0.65);
   opacity: 1;
 }
 
@@ -100,36 +105,16 @@
   color: #53ad55;
 }
 
-p {
+.taskHolder p {
   color: #868686;
   font-size: 10px;
   font-weight: bolder;
 }
 
-hr {
+.taskHolder hr {
+  border: none;
+  height: 1px;
   background-color: #d0d0d0;
-}
-
-input[type=checkbox] {
-  width: 20px;
-  height: 20px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: 1px solid rgba(147, 224, 102, 0.45);
-  box-shadow: 0 0 5px 2px inset rgba(49, 155, 120, 0.32);
-  position: relative;
-}
-input[type=checkbox]::before {
-  position: absolute;
-  content: '';
-  background-color: rgba(155, 224, 116, 0.65);
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 5px;
-  opacity: 0;
 }
 
 @keyframes cardBorderPulse {
@@ -145,4 +130,8 @@ input[type=checkbox]::before {
     border: 1px solid rgba(147, 224, 102, 0.45);
     box-shadow: 0 0 5px 2px inset rgba(49, 155, 120, 0.32);
   }
+}
+
+.card-editable .editIcon {
+  display: unset;
 }

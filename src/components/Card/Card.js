@@ -1,15 +1,17 @@
-import { useState } from 'react';
-import './Card.css';
+import { useContext, useEffect, useState } from 'react';
 import { AiFillEdit, AiFillSave, AiOutlineCloseSquare } from 'react-icons/ai';
 import classNames from 'classnames';
+import styles from './Card.module.css';
+import IsEditableContext from '../../context';
 
-const Card = () => {
+const Card = (props) => {
   const [isSelected, setIsSelected] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing eli, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+  const initialText = props.text;
+  const initialCaption = props.caption;
 
-  const [caption, setCaption] = useState('Caption');
-  const [description, setDescription] = useState(text);
+  const [caption, setCaption] = useState(initialCaption);
+  const [description, setDescription] = useState(initialText);
   const [captionBuffer, setCaptionBuffer] = useState(caption);
   const [descriptionBuffer, setDescriptionBuffer] = useState(description);
 
@@ -41,24 +43,33 @@ const Card = () => {
     setDescription(event.target.value);
   };
 
+  const { isEditable } = useContext(IsEditableContext);
+
+  useEffect(() => {
+    onClickDiscardIconHandler();
+  }, [isEditable]);
+
   return (
-    <div className={classNames('taskHolder', { selected: isSelected, editing: isEditing })}>
-      <textarea className="captionField" onChange={onCaptionChangeHandler} disabled={!isEditing} maxLength={20} value={caption}>{caption}</textarea>
-      <div className="icons">
-        <div className="defaultIcons">
-          <input
-            type="checkbox"
-            onChange={onChangeHandler}
-          />
-          <AiFillEdit className="editIcon" onClick={onClickEditIconHandler} />
+    <div className={classNames(styles.taskHolder, { [styles.selected]: isSelected, [styles.editing]: isEditing })}>
+      <textarea className={styles.captionField} onChange={onCaptionChangeHandler} disabled={!isEditing} maxLength={20} value={caption}>
+        {caption}
+      </textarea>
+      <div className={styles.icons}>
+        <div className={styles.defaultIcons}>
+          <input type="checkbox" onChange={onChangeHandler} />
+          {!isEditable && <AiFillEdit className={styles.editIcon} onClick={onClickEditIconHandler} />}
         </div>
-        <div className="editingIcons">
-          <AiFillSave className="saveIcon" onClick={onClickSaveIconHandler} />
-          <AiOutlineCloseSquare className="discardIcon" onClick={onClickDiscardIconHandler} />
+        {isEditing && (
+        <div className={styles.editingIcons}>
+          <AiFillSave className={styles.saveIcon} onClick={onClickSaveIconHandler} />
+          <AiOutlineCloseSquare className={styles.discardIcon} onClick={onClickDiscardIconHandler} />
         </div>
+        )}
       </div>
       <hr />
-      <textarea rows={10} disabled={!isEditing} onChange={onDescriptionChangeHandler} className="textField" value={description}>{description}</textarea>
+      <textarea rows={10} disabled={!isEditing} onChange={onDescriptionChangeHandler} className={styles.textField} value={description}>
+        {description}
+      </textarea>
     </div>
   );
 };

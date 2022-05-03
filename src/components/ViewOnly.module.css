@@ -1,0 +1,32 @@
+.viewOnly {
+  margin-left: 4.5rem;
+  display: inline-block;
+}
+
+.viewOnly h3 {
+  display:inline-block;
+  color: #53ad55;
+  letter-spacing: 4px;
+  font-size: 15px;
+  margin-left: 20px;
+}
+
+.viewOnly input[type=checkbox] {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  transition: 100ms ease-in-out;
+}
+
+.viewOnly input[type=checkbox]::before {
+  opacity: 0;
+}
+
+.viewOnly.isEditable input[type=checkbox]::before {
+  background-color: rgba(160, 232, 120, 0.65);
+  opacity: 1;
+}
+
+.viewOnly input[type=checkbox]:active {
+  transform: scale(0.8);
+}
