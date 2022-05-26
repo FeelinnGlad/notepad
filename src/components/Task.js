@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import TaskLabel from './TaskLabel';
 import Header from './Header';
 import CardsList from './Card/CardsList';
 import dataSet from '../dataSet';
@@ -11,7 +10,6 @@ const Task = () => {
   return (
     <>
       <Header />
-      <TaskLabel />
       <IsEditableContext.Provider value={{ isEditable, setIsEditable }}>
         <ViewOnly />
         <CardsList items={dataSet} />
