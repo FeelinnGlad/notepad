@@ -1,14 +1,15 @@
 .taskSpace {
-  margin: 2rem;
+  margin: 1rem 2rem 1rem 2rem;
   color: #d0d0d0;
 }
 
 .navigationBlock {
-  position: absolute;
+  display: inline-block;
   top: 10px;
   border: 1px solid rgba(147, 224, 102, 0.45);
   box-shadow: 0 0 5px 2px inset rgba(49, 155, 120, 0.32);
   font-size: 10px;
   padding: 5px;
   margin-left: 40px;
+  width: max-content;
 }

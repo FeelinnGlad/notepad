@@ -2,7 +2,7 @@ import Card from './Card';
 import dataSet from '../../dataSet';
 
 const CardsList = () => (
-  <ul className="cards">
+  <ul className="cards" style={{ textAlign: 'center', paddingLeft: '1%' }}>
     {dataSet.map((card) => (
       <Card
         key={card.id}
