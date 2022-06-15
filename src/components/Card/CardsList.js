@@ -1,15 +1,10 @@
 import Card from './Card';
-import dataSet from '../../dataSet';
 
-const CardsList = () => (
+const CardsList = (props) => (
   <ul className="cards" style={{ textAlign: 'center', paddingLeft: '1%' }}>
-    {dataSet.map((card) => (
-      <Card
-        key={card.id}
-        caption={card.caption}
-        text={card.text}
-      />
-    ))}
+    {props.items.map((card) => (
+      <Card insertSelectedID={props.insertSelectedID} key={card.id} id={card.id} caption={card.caption} text={card.text} />
+    )) || 'No cards'}
   </ul>
 );
 
