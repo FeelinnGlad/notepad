@@ -30,6 +30,7 @@
     "react/prop-types": "off",
     "react/destructuring-assignment": "off",
     "react/jsx-no-constructed-context-values": "off",
-    "max-len": ["error", { "code": 180 }]
+    "max-len": ["error", { "code": 250 }],
+    "newline-per-chained-call": "off"
   }
 }

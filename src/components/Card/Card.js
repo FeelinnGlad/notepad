@@ -1,23 +1,27 @@
-import { useContext, useEffect, useState } from 'react';
+import {
+  useContext, useEffect, useState,
+} from 'react';
 import { AiFillEdit, AiFillSave, AiOutlineCloseSquare } from 'react-icons/ai';
 import classNames from 'classnames';
 import styles from './Card.module.css';
 import IsEditableContext from '../../context';
+import CardHeader from './CardHeader';
+import CardBody from './CardBody';
 
 const Card = (props) => {
   const [isSelected, setIsSelected] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const initialText = props.text;
-  const initialCaption = props.caption;
 
-  const [caption, setCaption] = useState(initialCaption);
-  const [description, setDescription] = useState(initialText);
+  const [caption, setCaption] = useState(props.caption);
   const [captionBuffer, setCaptionBuffer] = useState(caption);
-  const [descriptionBuffer, setDescriptionBuffer] = useState(description);
+
+  const [description, setDescription] = useState(props.caption);
+  const [descriptionBuffer, setDescriptionBuffer] = useState(props.text);
 
   const onChangeHandler = () => {
     setIsSelected((prevState) => !prevState);
     setIsEditing(false);
+    props.insertSelectedID(isSelected, props.id);
   };
 
   const onClickEditIconHandler = () => {
@@ -36,12 +40,6 @@ const Card = (props) => {
     setDescription(descriptionBuffer);
     setIsEditing(false);
   };
-  const onCaptionChangeHandler = (event) => {
-    setCaption(event.target.value);
-  };
-  const onDescriptionChangeHandler = (event) => {
-    setDescription(event.target.value);
-  };
 
   const { isEditable } = useContext(IsEditableContext);
 
@@ -50,10 +48,8 @@ const Card = (props) => {
   }, [isEditable]);
 
   return (
-    <div className={classNames(styles.taskHolder, { [styles.selected]: isSelected, [styles.editing]: isEditing })}>
-      <textarea className={styles.captionField} onChange={onCaptionChangeHandler} disabled={!isEditing} maxLength={20} value={caption}>
-        {caption}
-      </textarea>
+    <div id={props.id} className={classNames(styles.taskHolder, { [styles.selected]: isSelected, [styles.editing]: isEditing })}>
+      <CardHeader caption={caption} setCaption={setCaption} isEditing={isEditing} />
       <div className={styles.icons}>
         <div className={styles.defaultIcons}>
           <input type="checkbox" onChange={onChangeHandler} />
@@ -67,9 +63,7 @@ const Card = (props) => {
         )}
       </div>
       <hr />
-      <textarea rows={10} disabled={!isEditing} onChange={onDescriptionChangeHandler} className={styles.textField} value={description}>
-        {description}
-      </textarea>
+      <CardBody description={description} setDescription={setDescription} isEditing={isEditing} />
     </div>
   );
 };
