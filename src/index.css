@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500');
 
+:root {
+  --primaryGreen: rgba(147, 224, 102, 0.58);
+  --greenShadow: rgba(49, 155, 120, 0.32);
+  --white: #d0d0d0;
+  --accentGreen: #56c475;
+  --darkGreen: #206b35;
+  --darkGray: rgba(0, 0, 0, 0.25);
+  --blackShadow: rgba(0, 0, 0, 0.65);
+}
+
 * {
   font-family: 'Montserrat', sans-serif;
 }
@@ -7,7 +17,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #0f1014;
+  background-color: #1e2528;
+  font-family: 'Montserrat', sans-serif;
 }
 
 h2, h3, h4, a, .captionField {
@@ -31,7 +42,7 @@ input[type=checkbox] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: 1px solid rgba(147, 224, 102, 0.45);
-  box-shadow: 0 0 5px 2px inset rgba(49, 155, 120, 0.32);
+  border: 1px solid var(--primaryGreen);
+  box-shadow: 0 0 5px 2px inset var(--greenShadow);
   position: relative;
 }

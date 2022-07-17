@@ -5,7 +5,7 @@
 
 .viewOnly h3 {
   display:inline-block;
-  color: #53ad55;
+  color: var(--primaryGreen);
   letter-spacing: 4px;
   font-size: 15px;
   margin-left: 20px;
@@ -23,7 +23,7 @@
 }
 
 .viewOnly.isEditable input[type=checkbox]::before {
-  background-color: rgba(160, 232, 120, 0.65);
+  background-color: var(--primaryGreen);
   opacity: 1;
 }
 
