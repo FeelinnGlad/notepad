@@ -1,0 +1,16 @@
+.loadingSpace {
+  display: inline-block;
+  margin: 0 30px 30px 30px;
+  padding: 30px;
+  width: 240px;
+  height: 220px;
+  border: 1px solid var(--primaryGreen);
+  animation: gradient 2s ease infinite;
+  background: linear-gradient(0deg, rgba(83, 173, 85, 0.27) 10%, rgba(0, 0, 0, 0) 60%);
+}
+
+@keyframes gradient {
+  100% {
+    background-position: 0 280px;
+  }
+}

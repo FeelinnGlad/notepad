@@ -1,0 +1,18 @@
+.deleteButton {
+  color: var(--blackShadow);
+  background-color: var(--darkGreen);
+  border: 1px solid transparent;
+  margin-left: 20px;
+}
+
+.deleteButton:hover {
+  border: 1px solid var(--primaryGreen);
+  box-shadow: 0 0 5px 2px inset var(--greenShadow);
+  size: auto;
+  cursor: pointer;
+  color: var(--white);
+}
+
+.deleteButton:active {
+  background-color: var(--accentGreen);
+}

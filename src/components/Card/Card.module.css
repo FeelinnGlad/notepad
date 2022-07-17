@@ -1,11 +1,12 @@
 .taskHolder {
   display: inline-block;
-  margin: 0 2rem 2rem 2rem;
-  padding: 1.5rem;
-  width: 15rem;
-  background-color: rgba(0, 0, 0, 0.24);
-  box-shadow: 0 3px 4px 3px rgba(0, 0, 0, 0.67);
-  color: #d0d0d0;
+  margin: 0 30px 30px 30px;
+  padding: 30px;
+  width: 240px;
+  height: 220px;
+  background-color: var(--darkGray);
+  box-shadow: 0 3px 4px 3px var(--blackShadow);
+  color: var(--white);
   border: 1px solid transparent;
   transition: all 50ms ease-in-out;
 }
@@ -19,7 +20,7 @@
   padding: 5px;
   background-color: transparent;
   border: none;
-  color: #d0d0d0;
+  color: var(--white);
   font-weight: 800;
   font-size: 15px;
   resize: none;
@@ -44,13 +45,13 @@
 }
 
 .taskHolder ::-webkit-scrollbar-thumb {
-  background: #2d2d2d;
+  background: var(--darkGray);
 }
 
 .selected {
   background-color: rgba(12, 44, 28, 0.71);
-  border: 1px solid rgba(147, 224, 102, 0.45);
-  box-shadow: 0 0 5px 2px inset rgba(49, 155, 120, 0.32);
+  border: 1px solid var(--primaryGreen);
+  box-shadow: 0 0 5px 2px inset var(--greenShadow);
 }
 
 .icons {
@@ -69,16 +70,16 @@
   opacity: 0;
 }
 .selected input[type=checkbox]::before {
-  background-color: rgba(155, 224, 116, 0.65);
+  background-color: var(--primaryGreen);
   opacity: 1;
 }
 
 .editIcon {
-  color: rgba(147, 224, 102, 0.45);
+  color: var(--primaryGreen);
 }
 
 .editIcon:hover {
-  color: #d0d0d0;
+  color: var(--white);
 }
 
 .defaultIcons > *:active, .editingIcons > *:active {
@@ -102,11 +103,10 @@
 }
 
 .saveIcon:hover {
-  color: #53ad55;
+  color: var(--primaryGreen);
 }
 
 .taskHolder p {
-  color: #868686;
   font-size: 10px;
   font-weight: bolder;
 }
@@ -114,7 +114,7 @@
 .taskHolder hr {
   border: none;
   height: 1px;
-  background-color: #d0d0d0;
+  background-color: var(--white);
 }
 
 @keyframes cardBorderPulse {
@@ -127,8 +127,8 @@
   50% {
     animation-timing-function: ease-in-out;
     -webkit-animation-timing-function: ease-in-out;
-    border: 1px solid rgba(147, 224, 102, 0.45);
-    box-shadow: 0 0 5px 2px inset rgba(49, 155, 120, 0.32);
+    border: 1px solid var(--primaryGreen);
+    box-shadow: 0 0 5px 2px inset var(--greenShadow);
   }
 }
 
