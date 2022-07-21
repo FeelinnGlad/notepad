@@ -7,7 +7,6 @@ import styles from './Card.module.css';
 import IsEditableContext from '../../context';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
-import WithLoadingDelay from './WithLoadingDelay';
 
 const Card = (props) => {
   const [isSelected, setIsSelected] = useState(false);
@@ -49,25 +48,23 @@ const Card = (props) => {
   }, [isEditable]);
 
   return (
-    <WithLoadingDelay>
-      <div id={props.id} className={classNames(styles.taskHolder, { [styles.selected]: isSelected, [styles.editing]: isEditing })}>
-        <CardHeader caption={caption} setCaption={setCaption} isEditing={isEditing} />
-        <div className={styles.icons}>
-          <div className={styles.defaultIcons}>
-            <input type="checkbox" onChange={onChangeHandler} />
-            {!isEditable && <AiFillEdit className={styles.editIcon} onClick={onClickEditIconHandler} />}
-          </div>
-          {isEditing && (
+    <div id={props.id} className={classNames(styles.taskHolder, { [styles.selected]: isSelected, [styles.editing]: isEditing })}>
+      <CardHeader caption={caption} setCaption={setCaption} isEditing={isEditing} />
+      <div className={styles.icons}>
+        <div className={styles.defaultIcons}>
+          <input type="checkbox" onChange={onChangeHandler} />
+          {!isEditable && <AiFillEdit className={styles.editIcon} onClick={onClickEditIconHandler} />}
+        </div>
+        {isEditing && (
           <div className={styles.editingIcons}>
             <AiFillSave className={styles.saveIcon} onClick={onClickSaveIconHandler} />
             <AiOutlineCloseSquare className={styles.discardIcon} onClick={onClickDiscardIconHandler} />
           </div>
-          )}
-        </div>
-        <hr />
-        <CardBody description={description} setDescription={setDescription} isEditing={isEditing} />
+        )}
       </div>
-    </WithLoadingDelay>
+      <hr />
+      <CardBody description={description} setDescription={setDescription} isEditing={isEditing} />
+    </div>
   );
 };
 

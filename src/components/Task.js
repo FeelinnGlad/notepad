@@ -3,10 +3,10 @@ import { v4 as uuid } from 'uuid';
 import Header from './Header';
 import CardsList from './Card/CardsList';
 import dataSet from '../dataSet';
-import ViewOnly from './ViewOnly/ViewOnly';
+import ViewOnly from './ViewOnly';
 import IsEditableContext from '../context';
-import DeleteButton from './DeleteButton/DeleteButton';
-import NewCardButton from './NewCardButton/NewCardButton';
+import DeleteButton from './DeleteButton';
+import NewCardButton from './NewCardButton';
 
 const Task = () => {
   const [isEditable, setIsEditable] = useState(true);
