@@ -49,7 +49,7 @@
 }
 
 .selected {
-  background-color: rgba(12, 44, 28, 0.71);
+  background-color: rgba(32, 89, 35, 0.5);
   border: 1px solid var(--primaryGreen);
   box-shadow: 0 0 5px 2px inset var(--greenShadow);
 }
