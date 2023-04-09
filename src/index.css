@@ -8,6 +8,7 @@
   --darkGreen: #206b35;
   --darkGray: rgba(10, 10, 14, 0.34);
   --blackShadow: rgba(0, 0, 0, 0.65);
+  --secondaryText: #868686;
 }
 
 * {
@@ -24,6 +25,7 @@ body {
 h2, h3, h4, a, .captionField {
   text-transform: uppercase;
   letter-spacing: 4px;
+  color: var(--white);
 }
 
 input[type=checkbox]::before {

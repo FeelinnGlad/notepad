@@ -1,5 +1,11 @@
 import React from 'react';
 
-const IsEditableContext = React.createContext(true);
+const AppContext = React.createContext({
+  isEditable: true,
+  newDataSet: [],
+  deleteHandler: () => {},
+  insertSelectedID: () => {},
+  newCardHandler: () => {},
+});
 
-export default IsEditableContext;
+export default AppContext;

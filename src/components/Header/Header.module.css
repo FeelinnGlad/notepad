@@ -1,17 +1,15 @@
 .header {
-  text-align: center;
   background-color: var(--darkGray);
   box-shadow: 0 3px 4px 3px var(--blackShadow);
   color: var(--white);
-  width: 100%;
   display: flex;
+  margin-bottom: 20px;
+
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .header>h3 {
-  margin: 2rem 70% 0 30%;
+  /*margin: 2rem 70% 0 30%;*/
 }
-
-.header {
-  margin-bottom: 20px;
-}
-

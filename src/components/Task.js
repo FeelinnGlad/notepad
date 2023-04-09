@@ -4,7 +4,7 @@ import Header from './Header';
 import CardsList from './Card/CardsList';
 import dataSet from '../dataSet';
 import ViewOnly from './ViewOnly';
-import IsEditableContext from '../context';
+import AppContext from '../context';
 import DeleteButton from './DeleteButton';
 import NewCardButton from './NewCardButton';
 
@@ -33,15 +33,16 @@ const Task = () => {
   };
 
   return (
-    <>
+    <AppContext.Provider value={{
+      isEditable, setIsEditable, newDataSet, newCardHandler, deleteHandler, insertSelectedID,
+    }}
+    >
       <Header />
-      <IsEditableContext.Provider value={{ isEditable, setIsEditable }}>
-        <ViewOnly />
-        <NewCardButton newCardHandler={newCardHandler} />
-        <DeleteButton deleteHandler={deleteHandler} />
-        <CardsList items={newDataSet} insertSelectedID={insertSelectedID} />
-      </IsEditableContext.Provider>
-    </>
+      <ViewOnly />
+      <NewCardButton />
+      <DeleteButton />
+      <CardsList />
+    </AppContext.Provider>
   );
 };
 

@@ -35,7 +35,7 @@
   background-color: transparent;
   resize: none;
   border: none;
-  color: #868686;
+  color: var(--secondaryText);
   font-size: 11px;
   word-wrap: break-word;
 }
