@@ -10,7 +10,7 @@ const CounterBadge = () => {
       <h3>
         Cards
       </h3>
-      <span>{newDataSet.length}</span>
+      <span>{newDataSet.length || 0}</span>
     </div>
   );
 };
