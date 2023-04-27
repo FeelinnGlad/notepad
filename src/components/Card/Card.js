@@ -2,11 +2,12 @@ import {
   useContext, useEffect, useState,
 } from 'react';
 import { AiFillEdit, AiFillSave, AiOutlineCloseSquare } from 'react-icons/ai';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './Card.module.css';
-import IsEditableContext from '../../context';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
+import AppContext from '../../context';
 
 const Card = (props) => {
   const [isSelected, setIsSelected] = useState(false);
@@ -18,10 +19,12 @@ const Card = (props) => {
   const [description, setDescription] = useState(props.caption);
   const [descriptionBuffer, setDescriptionBuffer] = useState(props.text);
 
+  const { insertSelectedID } = useContext(AppContext);
+
   const onChangeHandler = () => {
     setIsSelected((prevState) => !prevState);
     setIsEditing(false);
-    props.insertSelectedID(isSelected, props.id);
+    insertSelectedID(isSelected, props.id);
   };
 
   const onClickEditIconHandler = () => {
@@ -41,7 +44,7 @@ const Card = (props) => {
     setIsEditing(false);
   };
 
-  const { isEditable } = useContext(IsEditableContext);
+  const { isEditable } = useContext(AppContext);
 
   useEffect(() => {
     onClickDiscardIconHandler();
@@ -66,6 +69,14 @@ const Card = (props) => {
       <CardBody description={description} setDescription={setDescription} isEditing={isEditing} />
     </div>
   );
+};
+
+Card.propTypes = {
+  insertSelectedID: PropTypes.elementType,
+  key: PropTypes.number,
+  id: PropTypes.string.isRequired,
+  caption: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default Card;

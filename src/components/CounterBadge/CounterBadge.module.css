@@ -1,0 +1,23 @@
+.counterBadge {
+  margin: 15px;
+  color: var(--white);
+  position: absolute;
+  right: 55px;
+  border: 1px solid var(--primaryGreen);
+  box-shadow: 0 0 5px 2px inset var(--greenShadow);
+  background-color: var(--greenShadow);
+  font-size: 10px;
+  padding: 2px 0 2px 5px;
+  display: flex;
+  align-items: center;
+}
+
+.counterBadge span {
+  display: inline-block;
+  background-color: var(--white);
+  padding: 2px;
+  min-width: 30px;
+  margin-left: 5px;
+  font-size: 15px;
+  color: var(--blackShadow);
+}
