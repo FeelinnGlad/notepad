@@ -1,4 +1,5 @@
 import {
+  memo,
   useContext, useEffect, useState,
 } from 'react';
 import { AiFillEdit, AiFillSave, AiOutlineCloseSquare } from 'react-icons/ai';
@@ -9,7 +10,12 @@ import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 import AppContext from '../../context';
 
-const Card = (props) => {
+const MemoizedCardHeader = memo(CardHeader, (prevProps, nextProps) => prevProps.caption === nextProps.caption && prevProps.isEditing === nextProps.isEditing);
+const MemoizedCardBody = memo(CardBody, (prevProps, nextProps) => prevProps.description === nextProps.description && prevProps.isEditing === nextProps.isEditing);
+
+function Card(props) {
+  console.log('>> CARD');
+
   const [isSelected, setIsSelected] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -52,7 +58,7 @@ const Card = (props) => {
 
   return (
     <div id={props.id} className={classNames(styles.taskHolder, { [styles.selected]: isSelected, [styles.editing]: isEditing })}>
-      <CardHeader caption={caption} setCaption={setCaption} isEditing={isEditing} />
+      <MemoizedCardHeader caption={caption} setCaption={setCaption} isEditing={isEditing} />
       <div className={styles.icons}>
         <div className={styles.defaultIcons}>
           <input type="checkbox" onChange={onChangeHandler} />
@@ -66,10 +72,10 @@ const Card = (props) => {
         )}
       </div>
       <hr />
-      <CardBody description={description} setDescription={setDescription} isEditing={isEditing} />
+      <MemoizedCardBody description={description} setDescription={setDescription} isEditing={isEditing} />
     </div>
   );
-};
+}
 
 Card.propTypes = {
   insertSelectedID: PropTypes.elementType,

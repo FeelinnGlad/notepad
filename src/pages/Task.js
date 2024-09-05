@@ -1,26 +1,30 @@
-import { useCallback, useEffect, useState } from 'react';
+import {
+  memo,
+  useCallback, useContext, useEffect, useState,
+} from 'react';
 import { v4 as uuid } from 'uuid';
 import axios from 'axios';
-import Header from './Header';
-import CardsList from './Card/CardsList';
-import ViewOnly from './ViewOnly';
-import AppContext from '../context';
-import DeleteButton from './DeleteButton';
-import NewCardButton from './NewCardButton';
+import CardsList from '../components/Card/CardsList';
+import ViewOnly from '../components/ViewOnly';
+import DeleteButton from '../components/DeleteButton';
+import NewCardButton from '../components/NewCardButton';
+import CardContext from '../context';
 
-const Task = () => {
-  const [isEditable, setIsEditable] = useState(true);
-  const [selectedIDList, setSelectedIDList] = useState([]);
+const MemoizedViewOnly = memo(ViewOnly, () => true);
+const MemoizedNewCardButton = memo(NewCardButton, () => true);
+
+function Task() {
+  console.log('>>> TASK');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [newDataSet, setNewDataSet] = useState([]);
+  const { newDataSet, setNewDataSet } = useContext(CardContext);
 
   const fetchCards = useCallback(async () => {
     setIsLoading(true);
     setError(null);
     try {
       const response = await axios.get('https://raw.githubusercontent.com/BrunnerLivio/PokemonDataGraber/master/output.json');
-      const receivedData = response.data.slice(0, 1).map((card) => ({
+      const receivedData = response.data.slice(0, 15).map((card) => ({
         id: uuid(),
         caption: card.Name,
         text: card.About,
@@ -38,7 +42,7 @@ const Task = () => {
         setError(err.request);
       } else {
         // Something happened in setting up the request that triggered an Error
-        setError(err.message());
+        setError(err.message);
       }
     }
     setIsLoading(false);
@@ -50,24 +54,7 @@ const Task = () => {
     })();
   }, [fetchCards]);
 
-  const deleteHandler = () => {
-    setNewDataSet((prevState) => prevState.filter((el) => !selectedIDList.includes(el.id)));
-  };
-  const insertSelectedID = (isSelected, selectedID) => {
-    if (!isSelected) {
-      setSelectedIDList([...selectedIDList, selectedID]);
-    } else {
-      setSelectedIDList(selectedIDList.filter((id) => id !== selectedID));
-    }
-  };
-
-  const newCardHandler = () => {
-    setNewDataSet([...newDataSet, {
-      id: uuid(),
-      caption: '',
-      text: '',
-    }]);
-  };
+  // const MemoizedCardList = memo(CardsList);
 
   let content = <h4 style={{ color: 'var(--secondaryText)' }}>No cards</h4>;
   if (newDataSet.length > 0) content = <CardsList />;
@@ -79,19 +66,16 @@ const Task = () => {
   if (isLoading) content = <h4 style={{ color: 'var(--secondaryText)' }}>Loading...</h4>;
 
   return (
-    <AppContext.Provider value={{
-      isEditable, setIsEditable, newDataSet, newCardHandler, deleteHandler, insertSelectedID,
-    }}
-    >
-      <Header />
-      <ViewOnly />
-      <NewCardButton />
+    <>
+      {/* <Header /> */}
+      <MemoizedViewOnly />
+      <MemoizedNewCardButton />
       <DeleteButton />
       <div style={{ textAlign: 'center' }}>
         {content}
       </div>
-    </AppContext.Provider>
+    </>
   );
-};
+}
 
 export default Task;

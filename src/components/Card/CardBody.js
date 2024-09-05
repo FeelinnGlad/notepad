@@ -1,6 +1,8 @@
 import styles from './Card.module.css';
 
-const CardBody = (props) => {
+function CardBody(props) {
+  console.log('> card body');
+
   const onDescriptionChangeHandler = (event) => {
     props.setDescription(event.target.value);
   };
@@ -10,6 +12,6 @@ const CardBody = (props) => {
       {props.description}
     </textarea>
   );
-};
+}
 
 export default CardBody;

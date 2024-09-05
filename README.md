@@ -1,3 +1,3 @@
-# kmironenka
+# Notepad web app
 
-Repository for Katsiaryna Mironenka
+Notepad web application written with React.JS library

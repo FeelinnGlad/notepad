@@ -2,7 +2,9 @@ import { useContext } from 'react';
 import styles from './NewCardButton.module.css';
 import AppContext from '../../context';
 
-const NewCardButton = () => {
+function NewCardButton() {
+  console.log('>> New Card');
+
   const { newCardHandler } = useContext(AppContext);
 
   return (
@@ -10,6 +12,6 @@ const NewCardButton = () => {
       New card
     </button>
   );
-};
+}
 
 export default NewCardButton;

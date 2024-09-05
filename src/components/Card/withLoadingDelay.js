@@ -3,7 +3,7 @@ import LoadingCard from './LoadingCard';
 
 const DELAY = 2000;
 
-const withLoadingDelay = (Component) => (props) => {
+const withLoadingDelay = (Component) => function (props) {
   const [isLoading, setIsLoading] = useState(() => true);
   useEffect(() => {
     const timeout = setTimeout(() => {

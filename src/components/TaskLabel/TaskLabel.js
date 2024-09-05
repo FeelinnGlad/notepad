@@ -1,9 +1,13 @@
 import styles from './TaskLabel.module.css';
 
-const TaskLabel = () => (
-  <div className={styles.taskLabel}>
-    <h3>Task [T05.04]</h3>
-  </div>
-);
+function TaskLabel() {
+  console.log('>> TaskLabel');
+
+  return (
+    <div className={styles.taskLabel}>
+      <h3>Task [T07.01]</h3>
+    </div>
+  );
+}
 
 export default TaskLabel;

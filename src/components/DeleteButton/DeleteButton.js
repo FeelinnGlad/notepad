@@ -2,7 +2,9 @@ import { useContext } from 'react';
 import styles from './DeleteButton.module.css';
 import AppContext from '../../context';
 
-const DeleteButton = () => {
+function DeleteButton() {
+  console.log('>> Delete');
+
   const { deleteHandler } = useContext(AppContext);
 
   return (
@@ -10,5 +12,5 @@ const DeleteButton = () => {
       Delete selected
     </button>
   );
-};
+}
 export default DeleteButton;

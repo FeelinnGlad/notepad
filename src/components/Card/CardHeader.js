@@ -1,6 +1,8 @@
 import styles from './Card.module.css';
 
-const CardHeader = (props) => {
+function CardHeader(props) {
+  console.log('> card header');
+
   const onCaptionChangeHandler = (event) => {
     props.setCaption(event.target.value);
   };
@@ -16,6 +18,6 @@ const CardHeader = (props) => {
       {props.caption}
     </textarea>
   );
-};
+}
 
 export default CardHeader;

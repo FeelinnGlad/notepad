@@ -1,0 +1,17 @@
+.content{
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.content > div > div {
+  align-items: center;
+  background-color: var(--darkGray);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px
+}
+
+p {
+  color: var(--secondaryText);
+}

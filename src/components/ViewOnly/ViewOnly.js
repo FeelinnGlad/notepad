@@ -3,7 +3,9 @@ import { useContext } from 'react';
 import styles from './ViewOnly.module.css';
 import AppContext from '../../context';
 
-const ViewOnly = () => {
+function ViewOnly() {
+  console.log('>>>>>>>>> VIEWONLY');
+
   const { isEditable, setIsEditable } = useContext(AppContext);
 
   const onViewChangeHandler = () => {
@@ -16,6 +18,6 @@ const ViewOnly = () => {
       <h3>View only</h3>
     </div>
   );
-};
+}
 
 export default ViewOnly;

@@ -1,18 +1,20 @@
 import { useContext } from 'react';
 import styles from './CounterBadge.module.css';
-import AppContext from '../../context';
+import CardContext from '../../context';
 
-const CounterBadge = () => {
-  const { newDataSet } = useContext(AppContext);
+function CounterBadge() {
+  console.log('>> counter');
+
+  const { newDataSet } = useContext(CardContext);
 
   return (
     <div className={styles.counterBadge}>
       <h3>
         Cards
       </h3>
-      <span>{newDataSet.length || 0}</span>
+      <span>{newDataSet?.length || 0}</span>
     </div>
   );
-};
+}
 
 export default CounterBadge;
